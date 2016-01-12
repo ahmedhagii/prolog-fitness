@@ -63,8 +63,8 @@ angular.module('myApp', [
 	        		callMe(Days, data);
 	        		alert(response.data);
 	        	}else {
-	        		callMe(Days-1, data);
 	        		allData.push(response.data);
+	        		callMe(Days-1, data);
 	        	}
 	        }, function (response) {
 	            // onFailureFunction(response)
