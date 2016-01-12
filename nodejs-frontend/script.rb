@@ -28,12 +28,11 @@ ans = {}
 counter = 0
 while true do
 	counter += 1
-
 	full_url = 'http://localhost:5000/reply'
 	uri = URI.parse(full_url)
 	postData = Net::HTTP.post_form(uri, data)
 	# puts(postData.body)
-	if(!postData.body.index("Time limit").nil?)
+	if(!postData.body.index("Time limit").nil? && counter < 30)
 		next
 	end
 	resp = postData.body[postData.body.index('{')..postData.body.length]
