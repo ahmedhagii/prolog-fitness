@@ -5,7 +5,6 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.info',
   'myApp.schedule',
-  'myApp.version',
   'angularSpinner'
 ])
 .config(['$routeProvider', function($routeProvider) {
