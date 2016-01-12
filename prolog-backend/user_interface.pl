@@ -33,7 +33,7 @@ reply(Request) :-
         calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, DailyProtein, DailyCarbs, DailyFats, DailyCalories),
         call_with_time_limit(0.5, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
         S = json([schedule=Schedule]),
-		reply_json_dict(S).
+		reply_json(S).
 
 json_test(_Request) :-
 	S = json([name = ['chicken', 'beef']]),
