@@ -104,7 +104,7 @@ generate_meals(5, (DPL, DCL, DFL, DCalL), (DPR, DCR, DFR, DCalR), Answer) :-
 				CS #>= DCL, CS #=< DCR,
 
 				FS #= Fats1 + Fats2 + Fats3 + Fats4 + Fats5,
-				%% FS #>= DFL, FS #=< DFR,
+				FS #>= DFL, FS #=< DFR,
 
 				CalS #= Calories1 + Calories2 + Calories3 + Calories4 + Calories5,
 				CalS #>= DCalL, CalS #=< DCalR,

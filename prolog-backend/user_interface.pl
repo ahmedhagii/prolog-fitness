@@ -42,7 +42,7 @@ json_test(_Request) :-
 
 get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
 											calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, DailyProtein, DailyCarbs, DailyFats, DailyCalories),
-											%% write(DailyProtein), nl, write(DailyCarbs), nl, write(DailyFats), nl, write(DailyCalories), nl,
+											write(DailyProtein), nl, write(DailyCarbs), nl, write(DailyFats), nl, write(DailyCalories), nl,
 											DailyProteinRight is round(DailyProtein + (DailyProtein*4/100))*100000,
 											DailyProteinLeft is round(DailyProtein - (DailyProtein*4/100))*100000,
 
@@ -63,10 +63,10 @@ get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
 											DFR is DailyFatsRight//100000,
 											DCalL is DailyCaloriesLeft//100000,
 											DCalR is DailyCaloriesRight//100000,
-											%% write('Protein needed ':DPL-DPR), nl,
-											%% write('Carbs needed ':DCL-DCR), nl,
-											%% write('Fats needed ':DFL-DFR), nl,
-											%% write('Cals needed ':DCalL-DCalR), nl,
+											write('Protein needed ':DPL-DPR), nl,
+											write('Carbs needed ':DCL-DCR), nl,
+											write('Fats needed ':DFL-DFR), nl,
+											write('Cals needed ':DCalL-DCalR), nl,
 											first_call(DailyProtein, DailyCarbs, DailyFats, DailyCalories, Meals, Schedule).
 											%% write(Schedule),nl,
 											%% print_meal(1, Schedule).

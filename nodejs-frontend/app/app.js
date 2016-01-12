@@ -25,13 +25,13 @@ angular.module('myApp', [
 		usSpinnerService.spin('spinner-1');
 		var activit_num;
 		if(activit_level == "ALone") {
-			activit_num = "1.2"
-		}else if(activit_level == "ALtwo") {
 			activit_num = "1.3"
-		}else if(activit_level == "ALthree") {
+		}else if(activit_level == "ALtwo") {
 			activit_num = "1.5"
+		}else if(activit_level == "ALthree") {
+			activit_num = "1.6"
 		}else if(activit_level == "ALfour") {
-			activit_num = "1.7"
+			activit_num = "1.8"
 		}else if(activit_level == "ALfive") {
 			activit_num = "1.9"
 		}
@@ -61,7 +61,7 @@ angular.module('myApp', [
 
 	        	if(response.data.indexOf("Error") > -1 || response.data.indexOf("Time limit") > -1) {
 	        		callMe(Days, data);
-	        		alert(response.data);
+	        		// alert(response.data);
 	        	}else {
 	        		allData.push(response.data);
 	        		callMe(Days-1, data);

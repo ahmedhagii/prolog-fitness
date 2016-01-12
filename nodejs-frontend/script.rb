@@ -3,6 +3,7 @@
 require 'net/http'
 require 'json'
 require 'uri'
+require 'timeout'
 
 
 list = ARGV[0].split(" ")
@@ -16,31 +17,30 @@ data = {
 }
 
 
-require 'timeout'
-# flag = true
-# while(flag)
-# 	status =
-# 	  # Something that should be interrupted if it takes more than 5 seconds...
-# 	}
-# 	puts flag
-# end
 ans = {}
 counter = 0
 while true do
+	# puts
 	counter += 1
 	full_url = 'http://localhost:5000/reply'
 	uri = URI.parse(full_url)
 	postData = Net::HTTP.post_form(uri, data)
-	# puts(postData.body)
-	if(!postData.body.index("Time limit").nil? && counter < 30)
+	if(!postData.body.index("Time limit").nil? && counter < 20)
 		next
 	end
-	resp = postData.body[postData.body.index('{')..postData.body.length]
-	res = JSON.parse(resp)
-	# puts res["schedule"].to_json
-	res["schedule"].to_json
-	ans = res["schedule"].to_json
-	break
+	# puts(postData.body)
+
+	if(!postData.body.index("Time limit").nil?)
+		ans = []
+		break
+	else
+		resp = postData.body[postData.body.index('{')..postData.body.length]
+		res = JSON.parse(resp)
+		# puts res["schedule"].to_json
+		res["schedule"].to_json
+		ans = res["schedule"].to_json
+		break
+	end
 end
 puts ans
 # res["schedule"].to_json
