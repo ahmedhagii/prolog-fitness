@@ -1,4 +1,2 @@
-nodejs-frontend/node_modules
-nodejs-frontend/.DS_Store
-*/.DS_Store
-.DS_Store
+**/node_modules
+**/.DS_Store
