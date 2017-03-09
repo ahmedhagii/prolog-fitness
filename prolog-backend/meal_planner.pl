@@ -7,8 +7,8 @@ first_call(DailyProtein, DailyCarbs, DailyFats, DailyCalories, Meals, Schedule) 
 				DailyCarbsRight is round(DailyCarbs + (DailyCarbs*5/100))*100000,
 				DailyCarbsLeft is round(DailyCarbs - (DailyCarbs*5/100))*100000,
 
-				DailyFatsRight is round(DailyFats + (DailyFats*10/100))*100000,
-				DailyFatsLeft is round(DailyFats - (DailyFats*10/100))*100000,
+				DailyFatsRight is round(DailyFats + (DailyFats*5/100))*100000,
+				DailyFatsLeft is round(DailyFats - (DailyFats*5/100))*100000,
 
 				DailyCaloriesRight is round(DailyCalories + (DailyCalories*5/100))*100000,
 				DailyCaloriesLeft is round(DailyCalories - (DailyCalories*5/100))*100000,

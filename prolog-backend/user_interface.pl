@@ -49,11 +49,11 @@ get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
 											DailyCarbsRight is round(DailyCarbs + (DailyCarbs*4/100))*100000,
 											DailyCarbsLeft is round(DailyCarbs - (DailyCarbs*4/100))*100000,
 
-											DailyFatsRight is round(DailyFats + (DailyFats*20/100))*100000,
-											DailyFatsLeft is round(DailyFats - (DailyFats*20/100))*100000,
+											DailyFatsRight is round(DailyFats + (DailyFats*5/100))*100000,
+											DailyFatsLeft is round(DailyFats - (DailyFats*5/100))*100000,
 
-											DailyCaloriesRight is round(DailyCalories + (DailyCalories*4/100))*100000,
-											DailyCaloriesLeft is round(DailyCalories - (DailyCalories*4/100))*100000,
+											DailyCaloriesRight is round(DailyCalories + (DailyCalories*5/100))*100000,
+											DailyCaloriesLeft is round(DailyCalories - (DailyCalories*5/100))*100000,
 
 											DPL is DailyProteinLeft//100000,
 											DPR is DailyProteinRight//100000,
