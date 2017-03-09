@@ -1,3 +1,4 @@
+
 /* app css stylesheet */
 
 .menu {
@@ -10,11 +11,12 @@
 td {
   valign="middle";
 }
+
 .mealNumber {
     background-color: #4CAF50;
     color: white;
     width: 10%;
-    text-align: center;
+    /*text-align: center;*/
 }
 .menu:before {
   content: "[";
@@ -26,7 +28,7 @@ td {
 
 body {
   background-size: 100%;
-  filter: grayscale(100%);
+  /*filter: grayscale(100%);*/
 }
 
 .info {
@@ -48,6 +50,16 @@ button:focus {
 .header {
   text-align: center;
   font-size: 30px;
+}
+
+.blur {
+  -webkit-filter: grayscale(100%) blur(5px);
+  filter: grayscale(100%) blur(25px);
+  /*-webkit-filter: blur(25px);*/
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
+  /*filter: blur(5px);*/
 }
 
 body:before {
@@ -96,6 +108,12 @@ body:before {
     color: #3c763d;
     border-radius: 6px;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.nutritions {
+  font-size: 11px;
+  text-align: left;
+  vertical-align: left;
 }
 
 .button-success {

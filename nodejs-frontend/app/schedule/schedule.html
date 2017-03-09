@@ -8,7 +8,11 @@
 	 <table ng-repeat="meal in meals track by $index" class="table table-bordered" style="width:100%; font-size: 15px; border-style: 1 solid black">
 		<tr>
 			<td valign="middle" class="mealNumber">
-				<span style="vertical-align: middle;">Meal {{$index+1}}</span>
+				<span style="text-align: center">Meal {{$index+1}}</span><br>
+				<span class="nutritions">Protein {{meal[0]}}</span><br>
+				<span class="nutritions">Carbs {{meal[1]}}</span><br>
+				<span class="nutritions">Fats {{meal[2]}}</span><br>
+				<span class="nutritions">Calories {{meal[3]}}</span><br>
 			</td>
 			<td ng-repeat="foodItem in meal[4]">
 				{{foodItem[0]}}

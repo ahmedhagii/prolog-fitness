@@ -11,12 +11,12 @@ angular.module('myApp', [
   $routeProvider.otherwise({redirectTo: '/info'});
 }])
 
-.controller('RootCtrl', ['$location', '$scope', '$http', 'usSpinnerService', function($location, $scope, $http, usSpinnerService) {
+.controller('RootCtrl', ['$location', '$scope', '$http', '$routeParams', 'usSpinnerService', function($location, $scope, $http, $routeParams, usSpinnerService) {
 
 	var activit_level=null;
 	var purpose=null;
-
-	// $scope.meals = [{number:1, name:'mealone'}, {number:2, items:[{name:'chicken', number:50}, {name:'beef', number:50}]},{number:3, items:[{name:'beef'}]}]
+	
+	
 	var res = [];
 	$scope.mealsNumber=null;
 	$scope.beastify = function beastify() {
@@ -32,6 +32,7 @@ angular.module('myApp', [
 		}
 
 		usSpinnerService.spin('spinner-1');
+		$scope.loading = true;
 		var activit_num;
 		if(activit_level == "ALone") {
 			activit_num = "1.3"
@@ -60,8 +61,17 @@ angular.module('myApp', [
 			console.debug(data);
 			if(Days == 0) {
 	        	usSpinnerService.stop('spinner-1');
+	        	$scope.loading = false;
 				console.log('all data');
 				console.debug( allData);
+				for(var day of allData) {
+					for(var meal of day) {
+						meal[0] = Math.round(meal[0] / 100000);
+						meal[1] = Math.round(meal[1] / 100000);
+						meal[2] = Math.round(meal[2] / 100000);
+						meal[3] = Math.round(meal[3] / 100000);
+					}
+				}
 				$location.search({ data: allData});
 				$location.path('/schedule');
 				return;

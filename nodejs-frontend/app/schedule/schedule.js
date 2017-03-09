@@ -9,8 +9,10 @@ angular.module('myApp.schedule', ['ngRoute'])
   });
 }])
 
-.controller('ScheduleCtrl', ['$scope', '$location', function($scope, $location) {
+.controller('ScheduleCtrl', ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
 
-	$scope.mealsAll = $location.search().data;
+	console.log('>>>>>>>> router params:', $routeParams);
+	if($routeParams) $scope.mealsAll = $routeParams.data;
+	else $scope.mealsAll = $location.search().data;
 
 }]);
