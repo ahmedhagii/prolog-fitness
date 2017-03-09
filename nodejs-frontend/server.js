@@ -3,7 +3,6 @@ var app      = express();                               // create our app w/ exp
 var morgan = require('morgan');             // log requests to the console (express4)
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
-var $ = require('jquery');
 var application_root = __dirname;
 var path = require( 'path' );
 var request = require("request");
@@ -28,6 +27,8 @@ app.get('*', function(req, res) {
 
 // api routes
 app.post('/submit-info', function(req, res) {
+	n = new Date();
+    console.log('##### ' + n);
     console.log(req.params);
     console.log(req.body);
     console.log(req.query);

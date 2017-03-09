@@ -20,10 +20,10 @@ server(Port) :-						% (2)
         http_server(http_dispatch, [port(Port)]).
 
 reply(Request) :-
-        member(method(post), Request), !,
+%%        member(method(post), Request), !,
         http_read_data(Request, Data, []),
         format('Content-type: text/plain~n~n', []),
-        %% write(Data), nl,
+         write(Data), nl,
         Data = [weight=Weight1, fat=Fat1, al=ActivityLevel1, bulking=Bulking, meals=Meals1],
         %% write(Age), nl,
         atom_number(Weight1, Weight),
@@ -31,7 +31,7 @@ reply(Request) :-
         atom_number(ActivityLevel1, ActivityLevel),
         atom_number(Meals1, Meals),
         calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, DailyProtein, DailyCarbs, DailyFats, DailyCalories),
-        call_with_time_limit(0.5, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
+        call_with_time_limit(1, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
         S = json([schedule=Schedule]),
 		reply_json(S).
 

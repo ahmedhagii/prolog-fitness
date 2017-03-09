@@ -56,8 +56,12 @@ angular.module('myApp', [
 		var allData = []
 		var failedAttempts=0;
 		function callMe(Days, data) {
+			console.log('calling day: ' + Days);
+			console.debug(data);
 			if(Days == 0) {
 	        	usSpinnerService.stop('spinner-1');
+				console.log('all data');
+				console.debug( allData);
 				$location.search({ data: allData});
 				$location.path('/schedule');
 				return;
@@ -67,8 +71,8 @@ angular.module('myApp', [
 	            method: "POST",
 	            data: data,
 	        }).then(function (response) {
-	        	console.log(response.data);
-	        	if(response.data.indexOf("Error") > -1 || response.data.indexOf("Time limit") > -1) {
+	        	console.debug(response.data);
+	        	if(response.data == undefined || response.data.indexOf("Error") > -1 || response.data.indexOf("Time limit") > -1) {
 		        	failedAttempts += 1;
 		        	if(failedAttempts > 3) {
 		        		callMe(Days-1, data);
@@ -82,6 +86,8 @@ angular.module('myApp', [
 	        		callMe(Days-1, data);
 	        	}
 	        }, function (response) {
+			console.log('failed :((');
+			console.debug(response);
 	            // onFailureFunction(response)
 	        });
 		}
