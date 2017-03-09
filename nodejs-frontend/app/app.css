@@ -12,6 +12,18 @@ td {
   valign="middle";
 }
 
+.generating {
+    width: 20%;
+    text-align: center;
+    font-size: 25px;
+    margin: auto;
+    margin-top: 12%;
+}
+
+.display-generating {
+  display: none;
+}
+
 .mealNumber {
     background-color: #4CAF50;
     color: white;

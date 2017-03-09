@@ -15,7 +15,7 @@ angular.module('myApp', [
 
 	var activit_level=null;
 	var purpose=null;
-	
+	$scope.currentDay = 0;
 	
 	var res = [];
 	$scope.mealsNumber=null;
@@ -57,6 +57,7 @@ angular.module('myApp', [
 		var allData = []
 		var failedAttempts=0;
 		function callMe(Days, data) {
+
 			console.log('calling day: ' + Days);
 			console.debug(data);
 			if(Days == 0) {
@@ -76,6 +77,7 @@ angular.module('myApp', [
 				$location.path('/schedule');
 				return;
 			}
+			$scope.currentDay = (6 - Days);
 			$http({
 	            url: '/submit-info',
 	            method: "POST",

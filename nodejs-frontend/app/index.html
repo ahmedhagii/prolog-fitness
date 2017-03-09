@@ -1,57 +1,31 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"> -->
+<html lang="en" ng-app="myApp" class="no-js">
+	<head>
+		<title>Meal Planner</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- // <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js"></script> -->
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <!-- // <script src="bower_components/angular/angular.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
-  <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js.map"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
-  <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.min.js.map"></script> -->
+		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico"/>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="app.css">
 
-  <script src="bower_components/spin.js/spin.js"></script>
-  <script src="bower_components/angular-spinner/angular-spinner.js"></script>
-  <!-- // <script src="bower_components/angular-route/angular-route.js"></script> -->
-  <!-- // <script src="bower_components/jquery/dist/jquery.js"></script> -->
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script src="info/info.js"></script>
-  <script src="schedule/schedule.js"></script>
-  <!-- // <script src="components/version/version.js"></script> -->
-  <!-- // <script src="components/version/version-directive.js"></script> -->
-  <!-- // <script src="components/version/interpolate-filter.js"></script> -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
 
-  <!-- // <script type="text/javascript" src="http://fgnass.github.io/spin.js/spin.min.js"></script> -->
-  <!-- // <script type="text/javascript" src="assets/js/angular-spinner.min.js"></script> -->
-  <!-- // <script type="text/javascript" src="assets/js/angular-loading-spinner.js"></script> -->
-  <!-- spinner -->
-  <!-- <script src="assets/js/angular-spinner.js"/> -->
-  <!-- <script src="assets/js/angular-loading-spinner.js"/> -->
-  <!-- <script src="assets/js/spin.min.js"/> -->
+		<script src="bower_components/angular-spinner/dist/angular-spinner.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="app.js"></script>
+		<script src="info/info.js"></script>
+		<script src="schedule/schedule.js"></script>
+	</head>
 
-  <script src="app.js"></script>
-</head>
-
-<body ng-controller="RootCtrl">
-
-  <div>
-    <br><br>
-    <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
-    <div ng-view></div>
-  </div>
-
-</body>
+	<body ng-controller="RootCtrl">
+		<div>
+			<br><br>
+			<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+			<div ng-view></div>
+		</div>
+	</body>
 </html>
