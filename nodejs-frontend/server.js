@@ -1,11 +1,11 @@
-var express  = require('express');
-var app      = express();                               // create our app w/ express
-var morgan = require('morgan');             // log requests to the console (express4)
-var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
-var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var express          = require('express');
+var app              = express();                  // create our app w/ express
+var morgan           = require('morgan');          // log requests to the console (express4)
+var bodyParser       = require('body-parser');     // pull information from HTML POST (express4)
+var methodOverride   = require('method-override'); // simulate DELETE and PUT (express4)
 var application_root = __dirname;
-var path = require( 'path' );
-var request = require("request");
+var request          = require("request");
+var path             = require( 'path' );
 
 // configuration =================
 app.use(morgan('dev'));                                         // log every request to the console
@@ -33,7 +33,6 @@ app.post('/submit-info', function(req, res) {
     console.log(req.body);
     console.log(req.query);
     var query = req.body.weight + ' ' + req.body.fat + ' ' + req.body.al + ' ' + req.body.bulking + ' ' + req.body.meals;
-    // console.log(query);
     var process =  require('child_process'); process.exec("ruby script.rb \'" + query+ '\'' ,function (err,stdout,stderr) {
     if(err){
         console.log(stderr);
