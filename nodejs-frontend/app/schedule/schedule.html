@@ -1,28 +1,27 @@
-<div  class="well well-lg" style="width:80%; margin-left: 10%; background-color: white">
+<div  class="well well-lg schedule-container">
+	<li><a href="#/info">Back</a></li>
 
-<li><a href="#/info">Back</a></li>
-
-<div class="well well-lg" ng-repeat="meals in mealsAll track by $index">
-	<p style="font-size: 20px;" class="label label-default">Day {{$index + 1}}</p>
-	<br>
-	 <table ng-repeat="meal in meals track by $index" class="table table-bordered" style="width:100%; font-size: 15px; border-style: 1 solid black">
-		<tr>
-			<td valign="middle" class="mealNumber">
-				<span style="text-align: center">Meal {{$index+1}}</span><br>
-				<span class="nutritions">Protein {{meal[0]}}</span><br>
-				<span class="nutritions">Carbs {{meal[1]}}</span><br>
-				<span class="nutritions">Fats {{meal[2]}}</span><br>
-				<span class="nutritions">Calories {{meal[3]}}</span><br>
-			</td>
-			<td ng-repeat="foodItem in meal[4]">
-				{{foodItem[0]}}
+	<div class="well well-lg" ng-repeat="meals in mealsAll track by $index">
+		<p style="font-size: 20px;" class="label label-default">Day {{$index + 1}}</p>
+		<br>
+		 <table ng-repeat="meal in meals track by $index" class="table table-bordered" style="width:100%; font-size: 15px; border-style: 1 solid black">
+			<tr>
+				<td valign="middle" class="mealNumber">
+					<span style="text-align: center">Meal {{$index+1}}</span><br>
+					<span class="nutritions">Protein {{meal[0]}}</span><br>
+					<span class="nutritions">Carbs {{meal[1]}}</span><br>
+					<span class="nutritions">Fats {{meal[2]}}</span><br>
+					<span class="nutritions">Calories {{meal[3]}}</span><br>
+				</td>
+				<td ng-repeat="foodItem in meal[4]">
+					{{foodItem[0]}}
+					<br>
+					<img ng-src="assets/{{foodItem[1]}}.jpg" style="float:right; width: 60px; height=60px;"></img>
+					{{foodItem[2]}} g
+				</td>
 				<br>
-				<img ng-src="assets/{{foodItem[1]}}.jpg" style="float:right; width: 60px; height=60px;"></img>
-				{{foodItem[2]}} g
-			</td>
-			<br>
-		</tr>
-	</table>
-	<br>
-</div>
+			</tr>
+		</table>
+		<br>
+	</div>
 </div>

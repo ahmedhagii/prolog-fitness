@@ -1,14 +1,15 @@
-food(breakfast, 4, ('Whole Egg', 'egg', 13000, 700, 10000 ,143000,2,3)).
-food(breakfast, 4, ('Egg Whites', 'egg', 11000, 700, 200 ,52000,2,5)).
-food(breakfast, 5, ('Skimmed Milk', 'milk',3400, 5000, 100 ,34000,100,500)).
-food(breakfast, 5, ('Milk full fat', 'milk', 3300, 4600, 3700 ,64000,100,500)).
-food(breakfast, 6, ('Whey Protein', 'whey', 80000, 10000, 3300 ,400000,30,90)).
-food(breakfast, 6, ('Tomatos ', 'tomatos', 900, 3900, 200 ,18000,50,250)).
 food(breakfast, 1, ('Honey', 'honey', 300, 82000, 0 ,304000,5,25)).
 food(breakfast, 2, ('Swiss cheese', 'swiss_cheese', 27000, 5000, 28000 ,380000,28,125)).
 food(breakfast, 2, ('Cheddar Cheese', 'cheddar_cheese', 25000, 1300, 33000 ,402000,28,125)).
 food(breakfast, 2, ('Gouda Cheese', 'gouda_cheese', 25000, 2200, 27000 ,356000,28,125)).
 food(breakfast, 3, ('Multi Grain Bread', 'grain_bread', 13000, 43000, 4200 ,265000,24,96)).
+food(breakfast, 4, ('Whole Egg', 'egg', 13000, 700, 10000 ,143000,2,3)).
+food(breakfast, 4, ('Egg Whites', 'egg', 11000, 700, 200 ,52000,2,5)).
+food(breakfast, 5, ('Skimmed Milk', 'milk',3400, 5000, 100 ,34000,100,500)).
+food(breakfast, 5, ('Milk full fat', 'milk', 3300, 4600, 3700 ,64000,100,500)).
+food(breakfast, 6, ('Whey Protein', 'whey', 80000, 10000, 3300 ,400000,30,90)).
+food(breakfast, 6, ('Tomatos', 'tomatos', 900, 3900, 200 ,18000,50,250)).
+food(breakfast, 7, ('Oatmeal', 'oatmeal', 16000, 67000, 6000, 367000, 45, 120)).
 
 food(breakfast-lunch, 1, ('Banana ', 'banana', 1100, 23000, 300 ,89000,100,300)).
 food(breakfast-lunch, 2, ('Pear', 'pear', 400, 15000, 100 ,57000,150,300)).

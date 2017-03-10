@@ -46,27 +46,19 @@ app.post('/submit-info', function(req, res) {
 		headers: {'content-type': 'application/json'},
 		json: data
 	};
-	var counter = 0;
-	makeRequest();
-	function makeRequest() {
-		counter++;
-		request(options, function (error, response, body) {
-			console.log(error, response, body);
-			if(body.toString().search("Time limit") != -1) {
-				if(counter < 20) {
-					makeRequest();
-				}else {
-					res.send([]);
-				}
+
+	request(options, function (error, response, body) {
+		console.log(error, body);
+		if(body.toString().search("Time limit") != -1) {
+			res.send([]);
+		}else {
+			if (!error && response.statusCode == 200) {
+				res.send(body);
 			}else {
-				if (!error && response.statusCode == 200) {
-					res.send(body);
-				}else {
-					res.send(error);
-				}	
-			}
-		});	
-	}
+				res.send(error);
+			}	
+		}
+	});
 	
 	// var query = req.body.weight + ' ' +  + ' ' + req.body.al + ' ' + req.body.bulking + ' ' + req.body.meals;
 	// var process =  require('child_process'); process.exec("ruby script.rb \'" + query+ '\'' ,function (err,stdout,stderr) {

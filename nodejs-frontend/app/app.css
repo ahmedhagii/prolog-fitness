@@ -40,6 +40,14 @@ td {
 
 body {
   background-size: 100%;
+  
+  /* Moz-browsers */
+  /*-moz-transform: scale(0.9, 0.9); */
+  /* Other non-webkit browsers */
+  /*zoom: 0.9; */
+  /* Webkit browsers */
+  /*zoom: 90%; */
+
   /*filter: grayscale(100%);*/
 }
 
@@ -53,6 +61,13 @@ body {
   float: left;
   margin-right: 5%;
   /*margin-left: 35%;*/
+}
+
+.schedule-container {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
 }
 
 button:focus {
