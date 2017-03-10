@@ -37,7 +37,7 @@ reply(Request) :-
         atom_number(ActivityLevel1, ActivityLevel),
         atom_number(Meals1, Meals),
         calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, DailyProtein, DailyCarbs, DailyFats, DailyCalories),
-        call_with_time_limit(1, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
+        call_with_time_limit(10, try(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
         S = json([schedule=Schedule]),
 		reply_json_dict(S).
 
@@ -47,7 +47,12 @@ json_test(_Request) :-
 
 
 try(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
-		catch(call_with_time_limit(2, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)), E, try(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)).
+		catch(call_with_time_limit(1, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
+			E, 
+			(
+				A is random(500), set_random(seed(A)),
+				try(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)
+			)).
 
 
 get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
