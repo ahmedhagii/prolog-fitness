@@ -84,7 +84,7 @@ angular.module('myApp', [
 	            data: data,
 	        }).then(function (response) {
 	        	console.debug(response.data);
-	        	if(response.data == undefined || response.data.indexOf("Error") > -1 || response.data.indexOf("Time limit") > -1) {
+	        	if(response.data == undefined) {
 		        	failedAttempts += 1;
 		        	if(failedAttempts > 3) {
 		        		callMe(Days-1, data);
@@ -94,12 +94,12 @@ angular.module('myApp', [
 	        		// alert(response.data);
 	        	}else {
 	        		failedAttempts = 0;
-	        		allData.push(response.data);
+	        		allData.push(response.data.schedule);
 	        		callMe(Days-1, data);
 	        	}
 	        }, function (response) {
-			console.log('failed :((');
-			console.debug(response);
+				console.log('failed :((');
+				console.debug(response);
 	            // onFailureFunction(response)
 	        });
 		}

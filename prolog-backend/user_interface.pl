@@ -21,11 +21,17 @@ server(Port) :-						% (2)
 
 reply(Request) :-
 %%        member(method(post), Request), !,
-        http_read_data(Request, Data, []),
-        format('Content-type: text/plain~n~n', []),
-         write(Data), nl,
-        Data = [weight=Weight1, fat=Fat1, al=ActivityLevel1, bulking=Bulking, meals=Meals1],
-        %% write(Age), nl,
+		%% format(user_output, "I'm here~n",[]),
+        %% format('Content-type: text/plain~n~n', []),
+		http_read_json(Request, DictIn),
+		%% json_read(Request, DictIn, []),
+        %% http_read_data(Request, Data, []),
+        %% Data = [weight=Weight1],
+        DictIn = json([weight=Weight1, fat=Fat1, al=ActivityLevel1, bulking=Bulking, meals=Meals1]),
+        %% write(Data), nl,
+        %% S = json(DictIn),
+        %% reply_json(DictIn).
+  %%       %% write(Age), nl,
         atom_number(Weight1, Weight),
         atom_number(Fat1, Fat),
         atom_number(ActivityLevel1, ActivityLevel),
@@ -33,16 +39,20 @@ reply(Request) :-
         calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, DailyProtein, DailyCarbs, DailyFats, DailyCalories),
         call_with_time_limit(1, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)),
         S = json([schedule=Schedule]),
-		reply_json(S).
+		reply_json_dict(S).
 
 json_test(_Request) :-
 	S = json([name = ['chicken', 'beef']]),
 	reply_json_dict(S).
 
 
+try(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
+		catch(call_with_time_limit(2, get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)), E, try(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule)).
+
+
 get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
 											calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, DailyProtein, DailyCarbs, DailyFats, DailyCalories),
-											write(DailyProtein), nl, write(DailyCarbs), nl, write(DailyFats), nl, write(DailyCalories), nl,
+											%% write(DailyProtein), nl, write(DailyCarbs), nl, write(DailyFats), nl, write(DailyCalories), nl,
 											DailyProteinRight is round(DailyProtein + (DailyProtein*4/100))*100000,
 											DailyProteinLeft is round(DailyProtein - (DailyProtein*4/100))*100000,
 
@@ -63,10 +73,10 @@ get_schedule(Weight, Fat, ActivityLevel, Bulking, Meals, Schedule) :-
 											DFR is DailyFatsRight//100000,
 											DCalL is DailyCaloriesLeft//100000,
 											DCalR is DailyCaloriesRight//100000,
-											write('Protein needed ':DPL-DPR), nl,
-											write('Carbs needed ':DCL-DCR), nl,
-											write('Fats needed ':DFL-DFR), nl,
-											write('Cals needed ':DCalL-DCalR), nl,
+											%% write('Protein needed ':DPL-DPR), nl,
+											%% write('Carbs needed ':DCL-DCR), nl,
+											%% write('Fats needed ':DFL-DFR), nl,
+											%% write('Cals needed ':DCalL-DCalR), nl,
 											first_call(DailyProtein, DailyCarbs, DailyFats, DailyCalories, Meals, Schedule).
 											%% write(Schedule),nl,
 											%% print_meal(1, Schedule).

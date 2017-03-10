@@ -22,23 +22,59 @@ app.listen(8080);
 console.log("App listening on port 8080");
 
 app.get('*', function(req, res) {
-    res.send('app/index.html');
+	res.send('app/index.html');
 });
 
 // api routes
 app.post('/submit-info', function(req, res) {
 	n = new Date();
-    console.log('##### ' + n);
-    console.log(req.params);
-    console.log(req.body);
-    console.log(req.query);
-    var query = req.body.weight + ' ' + req.body.fat + ' ' + req.body.al + ' ' + req.body.bulking + ' ' + req.body.meals;
-    var process =  require('child_process'); process.exec("ruby script.rb \'" + query+ '\'' ,function (err,stdout,stderr) {
-    if(err){
-        console.log(stderr);
-        res.send(stderr);
-    } else {
-        console.log(stdout);
-        res.send(stdout);
-    } });
+	console.log('##### ' + n);
+	console.log(req.params);
+	console.log(req.body);
+	console.log(req.query);
+
+	var data = {
+		"weight": req.body.weight,
+		"fat": req.body.fat,
+		"al": req.body.al,
+		"bulking": req.body.bulking.toString(),
+		"meals": req.body.meals
+	};
+	var options = {
+		uri: 'http://localhost:5000/reply',
+		method: 'POST',
+		headers: {'content-type': 'application/json'},
+		json: data
+	};
+	var counter = 0;
+	makeRequest();
+	function makeRequest() {
+		counter++;
+		request(options, function (error, response, body) {
+			console.log(error, response, body);
+			if(body.toString().search("Time limit") != -1) {
+				if(counter < 20) {
+					makeRequest();
+				}else {
+					res.send([]);
+				}
+			}else {
+				if (!error && response.statusCode == 200) {
+					res.send(body);
+				}else {
+					res.send(error);
+				}	
+			}
+		});	
+	}
+	
+	// var query = req.body.weight + ' ' +  + ' ' + req.body.al + ' ' + req.body.bulking + ' ' + req.body.meals;
+	// var process =  require('child_process'); process.exec("ruby script.rb \'" + query+ '\'' ,function (err,stdout,stderr) {
+	// if(err){
+	// 	console.log(stderr);
+	// 	res.send(stderr);
+	// } else {
+	// 	console.log(stdout);
+	// 	res.send(stdout);
+	// } });
 });

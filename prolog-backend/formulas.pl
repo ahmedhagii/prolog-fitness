@@ -13,7 +13,7 @@ calculate_nutritions(Weight, Fat, ActivityLevel, Bulking, Protein, Carbs, Fats, 
 													%% bmr(Weight, Fat, BMR),
 													%% TotalCals is BMR*ActivityLevel,
 													InitialCals is 13.8 * Weight * 2.2 * (100 - Fat) / 100 * ActivityLevel,
-													write(InitialCals), nl,
+													%% write(InitialCals), nl,
 													(
 														(Bulking == true, TotalCals is InitialCals + 400*ActivityLevel);
 														(Bulking == false, TotalCals is InitialCals - 500)
